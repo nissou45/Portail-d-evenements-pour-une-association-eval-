@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Portail d'evenements pour une association</title>
+    <title>Portail d'évènements pour une association</title>
 
     <link rel="stylesheet" href="style.css" />
     <script src="script.js" defer></script>
@@ -12,34 +12,36 @@
   <body>
     <!-- HEADER -->
     <header class="barre-haut">
-      <h1>Portail d'evenements</h1>
+      <h1>Portail d'évènements</h1>
       <button id="bouton-theme">Mode sombre</button>
     </header>
 
-    <!-- CONTENU PRINCIPAL -->
     <main>
       <!-- SECTION LISTE DES EVENEMENTS -->
       <section id="liste-evenements">
-        <h2>Liste des evenements</h2>
+        <h2>Liste des évènements</h2>
         <div id="conteneur-evenements"></div>
       </section>
 
-      <!-- SECTION MON PLANNING -->
+      <!-- SECTION PLANNING -->
       <section id="mon-planning">
         <h2>Mon planning</h2>
         <div id="conteneur-planning"></div>
       </section>
     </main>
 
-    <!-- MODALE (cachee au depart) -->
+    <!-- MODALE -->
     <div id="modale" class="cachee">
       <div class="contenu-modale">
-        <span id="fermer-modale">X</span>
+        <span id="fermer-modale" class="btn-fermer">X</span>
         <h3 id="modale-titre"></h3>
         <p id="modale-description"></p>
         <p id="modale-date"></p>
         <p id="modale-lieu"></p>
         <a id="modale-lien" href="#" target="_blank">Voir plus</a>
+
+        <!-- bouton créé dynamiquement dans JS -->
+        <div id="zone-bouton-modale"></div>
       </div>
     </div>
   </body>

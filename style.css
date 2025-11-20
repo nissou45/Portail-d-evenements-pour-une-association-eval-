@@ -1,16 +1,12 @@
-/* VARIABLES DE COULEURS
-   (issues de la charte du sujet)*/
-
 :root {
   --couleur-primaire: #4ecdc4;
   --couleur-secondaire: #f5a623;
-  --couleur-tertiaire: #ffe66d;
   --couleur-claire: #f7fff7;
   --couleur-sombre: #292f36;
+  --couleur-tertiaire: #ffe66d;
 }
 
-/*RESET GLOBAL */
-
+/* RESET */
 * {
   margin: 0;
   padding: 0;
@@ -19,50 +15,39 @@
 
 body {
   font-family: Arial, Helvetica, sans-serif;
-  background-color: var(--couleur-claire);
+  background: var(--couleur-claire);
   color: var(--couleur-sombre);
-  line-height: 1.6;
   padding: 20px;
 }
 
-/*HEADER*/
-
+/* HEADER */
 .barre-haut {
+  background: var(--couleur-primaire);
+  padding: 15px;
   display: flex;
   justify-content: space-between;
-  align-items: center;
-  background-color: var(--couleur-primaire);
-  padding: 15px;
   border-radius: 5px;
   margin-bottom: 20px;
 }
 
 .barre-haut h1 {
-  font-size: 24px;
   color: white;
 }
 
 #bouton-theme {
   padding: 8px 12px;
   border: none;
-  background-color: var(--couleur-secondaire);
+  background: var(--couleur-secondaire);
   color: white;
   cursor: pointer;
   border-radius: 4px;
 }
 
-/* STRUCTURE DES SECTIONS*/
-
+/* SECTIONS */
 section {
   margin-bottom: 30px;
 }
 
-h2 {
-  margin-bottom: 10px;
-  font-size: 20px;
-}
-
-/* Conteneurs pour les listes */
 #conteneur-evenements,
 #conteneur-planning {
   display: flex;
@@ -70,8 +55,14 @@ h2 {
   gap: 10px;
 }
 
-/* MODALE (cachee au depart) */
+/* CARTES */
+.carte-evenement {
+  border: 1px solid var(--couleur-primaire);
+  padding: 15px;
+  border-radius: 5px;
+}
 
+/* MODALE */
 .cachee {
   display: none;
 }
@@ -82,23 +73,109 @@ h2 {
   left: 0;
   width: 100%;
   height: 100%;
-  background-color: rgba(0, 0, 0, 0.6);
-
+  background: rgba(0, 0, 0, 0.6);
   display: flex;
   justify-content: center;
   align-items: center;
 }
 
 .contenu-modale {
-  background-color: white;
+  background: white;
   padding: 20px;
-  width: 90%;
-  max-width: 500px;
   border-radius: 8px;
+  width: 85%;
+  max-width: 500px;
 }
 
-#fermer-modale {
-  cursor: pointer;
+.btn-fermer {
   float: right;
+  cursor: pointer;
+  font-weight: bold;
+}
+/* MODALE FONCTIONNELLE */
+
+#modale.cachee {
+  display: none;
+}
+
+#modale {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 999;
+}
+
+.contenu-modale {
+  background: white;
+  padding: 20px;
+  border-radius: 8px;
+  width: 90%;
+  max-width: 450px;
+  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.3);
+  position: relative;
+  text-align: left;
+}
+
+.btn-fermer {
+  position: absolute;
+  top: 10px;
+  right: 15px;
+  cursor: pointer;
   font-size: 18px;
+  font-weight: bold;
+}
+/* ----------------------- */
+/*        MODE SOMBRE      */
+/* ----------------------- */
+
+body.theme-sombre {
+  background: #1e1e1e;
+  color: #f1f1f1;
+}
+
+/* Header */
+body.theme-sombre .barre-haut {
+  background: #333;
+}
+
+body.theme-sombre h1,
+body.theme-sombre h2,
+body.theme-sombre h3,
+body.theme-sombre p {
+  color: #f1f1f1;
+}
+
+/* Cartes événements */
+body.theme-sombre .carte-evenement {
+  background: #2c2c2c;
+  border-color: #888;
+}
+
+/* Modale */
+body.theme-sombre #modale .contenu-modale {
+  background: #2a2a2a;
+  color: #fff;
+}
+
+/* Boutons */
+body.theme-sombre button,
+body.theme-sombre #bouton-theme {
+  background: #555 !important;
+  color: white !important;
+}
+
+/* Modal overlay */
+body.theme-sombre #modale {
+  background: rgba(0, 0, 0, 0.7);
+}
+.carte-evenement:hover {
+  border-color: var(--couleur-tertiaire);
+  transition: 0.2s;
 }
