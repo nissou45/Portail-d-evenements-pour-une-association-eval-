@@ -1,148 +1,196 @@
+/*  PALETTE DE COULEURS — Je crée mes variables globales   */
+
 :root {
-  --couleur-primaire: #4ecdc4;
-  --couleur-secondaire: #f5a623;
-  --couleur-claire: #f7fff7;
-  --couleur-sombre: #292f36;
-  --couleur-tertiaire: #ffe66d;
+  --couleur-primaire: #4ecdc4; /* Vert eau – couleur principale */
+  --couleur-secondaire: #f5a623; /* Orange – boutons et accents */
+  --couleur-claire: #f7fff7; /* Blanc cassé – fond du site */
+  --couleur-sombre: #292f36; /* Gris très foncé – texte principal */
+  --couleur-tertiaire: #ffe66d; /* Jaune clair – hover */
+  --carte-bg: #ffffff; /* Fond d’une carte (event/planning) */
+  --carte-shadow: rgba(0, 0, 0, 0.08); /* Ombre douce des cartes */
 }
 
-/* RESET */
+/*  RESET — J’enlève les marges et styles par défaut        */
+
 * {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
+  margin: 0; /* Enlève les marges par défaut */
+  padding: 0; /* Enlève les padding par défaut */
+  box-sizing: border-box; /* Le padding n’agrandit plus mes boîtes */
 }
+
+/*  BODY — Style général du site    */
 
 body {
-  font-family: Arial, Helvetica, sans-serif;
-  background: var(--couleur-claire);
-  color: var(--couleur-sombre);
-  padding: 20px;
+  font-family: Arial, Helvetica, sans-serif; /* Police simple et lisible */
+  background: var(--couleur-claire); /* Fond très clair */
+  color: var(--couleur-sombre); /* Texte foncé */
+  padding: 20px; /* Espace intérieur global */
 }
 
-/* HEADER */
+/*  HEADER — Bandeau du haut      */
+
 .barre-haut {
-  background: var(--couleur-primaire);
-  padding: 15px;
-  display: flex;
-  justify-content: space-between;
-  border-radius: 5px;
-  margin-bottom: 20px;
+  background: var(--couleur-primaire); /* Fond vert eau */
+  padding: 15px 20px; /* Espace intérieur */
+  display: flex; /* Elements alignés sur une ligne */
+  justify-content: space-between; /* Titre à gauche – bouton à droite */
+  align-items: center; /* Centré verticalement */
+  border-radius: 10px; /* Coins arrondis */
+  margin-bottom: 25px; /* Distance avec la suite du site */
 }
 
 .barre-haut h1 {
-  color: white;
+  color: white; /* Titre blanc */
+  font-size: 24px; /* Taille du texte */
+  font-weight: bold; /* Texte en gras */
 }
+
+/*  BOUTON MODE SOMBRE      */
 
 #bouton-theme {
-  padding: 8px 12px;
-  border: none;
-  background: var(--couleur-secondaire);
-  color: white;
-  cursor: pointer;
-  border-radius: 4px;
+  padding: 10px 15px; /* Taille du bouton */
+  border: none; /* Pas de bordure */
+  background: var(--couleur-secondaire); /* Fond orange */
+  color: white; /* Texte blanc */
+  cursor: pointer; /* Curseur “main” */
+  border-radius: 6px; /* Coins arrondis */
+  font-weight: bold; /* Texte bien visible */
 }
 
-/* SECTIONS */
+/*  SECTIONS — Espacement entre les blocs   */
+
 section {
-  margin-bottom: 30px;
+  margin-bottom: 40px; /* Grandes marges entre sections */
 }
 
+/* Les conteneurs d’événements et planning */
 #conteneur-evenements,
 #conteneur-planning {
-  display: flex;
+  display: flex; /* Les cartes s'empilent verticalement */
   flex-direction: column;
-  gap: 10px;
+  gap: 15px; /* Espace entre chaque carte */
 }
 
-/* CARTES */
+/*  CARTES D'ÉVÉNEMENT / PLANNING    */
+
+/* CARTES EN COLONNE (style moderne)  */
 .carte-evenement {
-  border: 1px solid var(--couleur-primaire);
-  padding: 15px;
-  border-radius: 5px;
+  width: 90%; /* la carte ne prend pas toute la page */
+  max-width: 600px; /* limite pour un joli rendu */
+  margin: 0 auto; /* centre la carte */
+  background: white; /* fond propre */
+  padding: 20px;
+  border-radius: 12px; /* angles arrondis */
+  border: 2px solid var(--couleur-primaire);
 }
 
-/* MODALE */
-.cachee {
-  display: none;
+/* Effet au survol */
+.carte-evenement:hover {
+  transform: translateY(-3px);
+
+  border-color: var(--couleur-tertiaire);
 }
 
+/* Titre dans les cartes */
+.carte-evenement h3,
+.carte-evenement h4 {
+  margin-bottom: 8px; /* Petit espace après le titre */
+  font-size: 18px; /* Taille assez grande */
+  color: var(--couleur-sombre);
+  font-weight: bold; /* En gras */
+}
+
+/* Paragraphes dans les cartes */
+.carte-evenement p {
+  color: #555; /* Gris doux */
+  margin-bottom: 6px;
+}
+
+/* Bouton dans les cartes */
+.carte-evenement button {
+  margin-top: 10px;
+  padding: 8px 14px;
+  background: var(--couleur-secondaire); /* Orange */
+  border: none;
+  border-radius: 6px;
+  color: white;
+  cursor: pointer;
+  font-weight: bold;
+  transition: 0.2s; /* Animation quand on passe la souris */
+}
+
+.carte-evenement button:hover {
+  background: #d68d1f; /* Orange foncé au hover */
+}
+
+/* Effet hover sur la carte */
+.carte-evenement:hover {
+  transform: translateY(-3px); /* La carte monte légèrement */
+
+  border-color: var(--couleur-tertiaire); /* Bordure jaune */
+}
+
+/*  MODALE — Fenêtre qui s’affiche quand on clique   */
+
+/* Arrière-plan foncé */
 #modale {
   position: fixed;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
-  background: rgba(0, 0, 0, 0.6);
+  background: rgba(0, 0, 0, 0.6); /* Fond noir transparent */
   display: flex;
   justify-content: center;
   align-items: center;
 }
 
-.contenu-modale {
-  background: white;
-  padding: 20px;
-  border-radius: 8px;
-  width: 85%;
-  max-width: 500px;
-}
-
-.btn-fermer {
-  float: right;
-  cursor: pointer;
-  font-weight: bold;
-}
-/* MODALE FONCTIONNELLE */
-
+/* Cache la modale (class JS) */
 #modale.cachee {
   display: none;
 }
 
-#modale {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: rgba(0, 0, 0, 0.5);
-
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  z-index: 999;
-}
-
+/* Boîte blanche au centre */
 .contenu-modale {
   background: white;
-  padding: 20px;
-  border-radius: 8px;
+  padding: 25px;
+  border-radius: 12px;
   width: 90%;
-  max-width: 450px;
-  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.3);
+  max-width: 500px;
+
   position: relative;
-  text-align: left;
 }
 
+/* Petit X pour fermer */
 .btn-fermer {
   position: absolute;
-  top: 10px;
+  top: 12px;
   right: 15px;
   cursor: pointer;
-  font-size: 18px;
+  font-size: 20px;
   font-weight: bold;
 }
-/* ----------------------- */
-/*        MODE SOMBRE      */
-/* ----------------------- */
+
+/*  MODE SOMBRE — styles appliqués quand class="theme-sombre" */
 
 body.theme-sombre {
-  background: #1e1e1e;
-  color: #f1f1f1;
+  background: #1e1e1e; /* Fond très foncé */
+  color: #f1f1f1; /* Texte clair */
 }
 
-/* Header */
 body.theme-sombre .barre-haut {
-  background: #333;
+  background: #333; /* Header foncé */
+  box-shadow: 0 3px 10px rgba(255, 255, 255, 0.08);
+}
+
+body.theme-sombre .carte-evenement {
+  background: #2c2c2c; /* Carte foncée */
+  border-color: #888; /* Bordure gris clair */
+  box-shadow: 0 4px 10px rgba(255, 255, 255, 0.07);
+}
+
+body.theme-sombre .carte-evenement:hover {
+  box-shadow: 0 6px 16px rgba(255, 255, 255, 0.15);
 }
 
 body.theme-sombre h1,
@@ -152,30 +200,102 @@ body.theme-sombre p {
   color: #f1f1f1;
 }
 
-/* Cartes événements */
-body.theme-sombre .carte-evenement {
-  background: #2c2c2c;
-  border-color: #888;
-}
-
-/* Modale */
 body.theme-sombre #modale .contenu-modale {
   background: #2a2a2a;
   color: #fff;
 }
 
-/* Boutons */
-body.theme-sombre button,
-body.theme-sombre #bouton-theme {
-  background: #555 !important;
-  color: white !important;
+body.theme-sombre button {
+  background: #555 /*importan*/;
+  color: white; /*imprtant*/
+}
+/* Ligne des boutons */
+.boutons-carte {
+  display: flex;
+  gap: 10px;
+  margin-top: 10px;
+}
+/* Centre les titres des sections */
+#liste-evenements h2,
+#planning h2 {
+  text-align: center;
 }
 
-/* Modal overlay */
-body.theme-sombre #modale {
-  background: rgba(0, 0, 0, 0.7);
+/* Boutons primaires */
+.btn-details,
+.btn-ajout {
+  padding: 8px 14px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  color: white;
+  font-weight: bold;
 }
-.carte-evenement:hover {
-  border-color: var(--couleur-tertiaire);
-  transition: 0.2s;
+
+/* Style Voir détails */
+.btn-details {
+  background: var(--couleur-secondaire);
+}
+
+/* Style Ajouter */
+.btn-ajout {
+  background: var(--couleur-primaire);
+}
+
+/* Hover */
+.btn-details:hover,
+.btn-ajout:hover {
+}
+
+/* LAYOUT EN DEUX COLONNES  */
+
+#layout {
+  display: flex; /* mettre côte à côte */
+  gap: 20px; /* espace entre les colonnes */
+  align-items: flex-start; /* aligner en haut */
+}
+
+/* Colonne gauche : événements */
+#liste-evenements {
+  flex: 2; /* prend 2x plus de place que la colonne droite */
+}
+
+/* Colonne droite : planning */
+#planning {
+  flex: 1; /* plus étroit */
+  background: #ffffffaa; /* léger fond blanc transparent */
+  padding: 10px;
+  border-radius: 10px;
+  backdrop-filter: blur(3px);
+  border: 1px solid var(--couleur-tertiaire);
+  height: fit-content; /* la colonne prend juste la hauteur nécessaire */
+  position: sticky;
+  top: 20px; /* reste visible quand on scrolle */
+}
+
+/* RESPONSIVE POUR MOBILE */
+@media (max-width: 800px) {
+  #layout {
+    display: flex;
+    gap: 20px;
+    align-items: flex-start;
+  }
+
+  #liste-evenements {
+    flex: 2;
+  }
+
+  #planning {
+    flex: 1;
+    background: #ffffffaa;
+    padding: 10px;
+    border-radius: 10px;
+    backdrop-filter: blur(
+      3px
+    ); /*floute l’ARRIÈRE-PLAN, pas l’élément lui-même.*/
+    border: 1px solid var(--couleur-tertiaire);
+    height: fit-content;
+    position: sticky; /*un mélange entre position relative et position fixed.*/
+    top: 20px;
+  }
 }

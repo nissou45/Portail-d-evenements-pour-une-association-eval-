@@ -10,27 +10,28 @@
   </head>
 
   <body>
-    <!-- HEADER -->
+    <!-- HEADER (il doit être EN DEHORS du flex) -->
     <header class="barre-haut">
       <h1>Portail d'évènements</h1>
       <button id="bouton-theme">Mode sombre</button>
     </header>
 
-    <main>
-      <!-- SECTION LISTE DES EVENEMENTS -->
+    <!-- LAYOUT EN 2 COLONNES -->
+    <main id="layout">
+      <!-- colonne gauche -->
       <section id="liste-evenements">
         <h2>Liste des évènements</h2>
         <div id="conteneur-evenements"></div>
       </section>
 
-      <!-- SECTION PLANNING -->
-      <section id="mon-planning">
+      <!-- colonne droite -->
+      <section id="planning">
         <h2>Mon planning</h2>
         <div id="conteneur-planning"></div>
       </section>
     </main>
 
-    <!-- MODALE -->
+    <!-- Modale -->
     <div id="modale" class="cachee">
       <div class="contenu-modale">
         <span id="fermer-modale" class="btn-fermer">X</span>
@@ -39,8 +40,6 @@
         <p id="modale-date"></p>
         <p id="modale-lieu"></p>
         <a id="modale-lien" href="#" target="_blank">Voir plus</a>
-
-        <!-- bouton créé dynamiquement dans JS -->
         <div id="zone-bouton-modale"></div>
       </div>
     </div>
